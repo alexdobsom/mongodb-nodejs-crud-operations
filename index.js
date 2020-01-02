@@ -6,7 +6,6 @@
 
 // to be sure it works, in MongoDB Atlas, create a user and whitelist all IPs with 0.0.0.0/0
 
-
 const { MongoClient } = require("mongodb");
 // or var MongoClient = require('mongodb').MongoClient;
 
@@ -22,45 +21,49 @@ async function main() {
 
     await listDatabases(client);
 
-    // await createListing(client, {
-    //   name: "APIs and Microservices",
-    //   difficulty: "hard"
-    // });
+    // Create:
+    await createListing(client, {
+      name: "APIs and Microservices",
+      difficulty: "hard"
+    });
 
-    // await createMultipleListings(client, [
-    //   {
-    //     name: "Course 1",
-    //     difficulty: "easy"
-    //   },
-    //   {
-    //     name: "Course 2",
-    //     difficulty: "medium"
-    //   },
-    //   {
-    //     name: "Course 3",
-    //     difficulty: "hard"
-    //   }
-    // ]);
+    await createMultipleListings(client, [
+      {
+        name: "Course 1",
+        difficulty: "easy"
+      },
+      {
+        name: "Course 2",
+        difficulty: "medium"
+      },
+      {
+        name: "Course 3",
+        difficulty: "hard"
+      }
+    ]);
 
-    // await findOneListingByName(client, "Course 1");
+    // Read:
+    await findOneListingByName(client, "Course 1");
 
-    // await findListingsWithMinimumBathroomsBedroomsAndMostRecentReviews(client, {
-    //   minimumNumberOfBedrooms: 4,
-    //   minimumNumberOfBathrooms: 2,
-    //   maximumNumberOfResults: 5
-    // });
+    await findListingsWithMinimumBathroomsBedroomsAndMostRecentReviews(client, {
+      minimumNumberOfBedrooms: 4,
+      minimumNumberOfBathrooms: 2,
+      maximumNumberOfResults: 5
+    });
 
-    // await updateListingByName(client, "Infinite Views", { bedrooms: 6 });
+    // Update:
+    await updateListingByName(client, "Infinite Views", { bedrooms: 6 });
 
-    // await upsertListingByName(client, "Cozy Cottage", {
-    //   name: "Cozy Cottage",
-    //   bedrooms: 2,
-    //   last_scraped: "2019-01-01"
-    // });
+    await upsertListingByName(client, "Cozy Cottage", {
+      name: "Cozy Cottage",
+      bedrooms: 2,
+      last_scraped: "2019-01-01"
+    });
 
-    // await updateAllListingsToHavePropertyType(client);
+    await updateAllListingsToHavePropertyType(client);
 
-    // await deleteListingByName(client, "Cozy Cottage");
+    // Delete:
+    await deleteListingByName(client, "Cozy Cottage");
 
     await deleteListingsScrapedBeforeDate(client, "2020-02-15"); //delete all listings last scraped before this date
   } catch (e) {
