@@ -1,5 +1,6 @@
 // works with mongodb nodejs driver 3.4.1
 
+// code here: https://github.com/mongodb-developer/nodejs-quickstart
 // based on video tutorial: https://www.youtube.com/watch?v=ayNI9Q84v8g
 // read tutorial: https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database
 // more documentation: https://mongodb.github.io/node-mongodb-native/
@@ -74,7 +75,7 @@ async function main() {
 }
 
 //invoke the connection to the mongo cluster
-main().catch(console.err);
+main().catch(console.error);
 
 //list the available databases:
 async function listDatabases(client) {
